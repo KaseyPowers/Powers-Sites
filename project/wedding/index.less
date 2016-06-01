@@ -1,0 +1,139 @@
+@header-height: 120px;
+@Section-sides: 75px;
+
+@teal: #009494;
+@off-teal: #5AB4B1;
+@cream: #f1eae0;
+@ivory: #fffff0;
+
+@cream-green: #e0f1ea;
+@cream-blue: #e0f0f1;
+
+// @owl-yellow: #D0B976;
+// @poster: #F39653;
+// @orange: #D4643C;
+// @lime-mouse: #7E9470;
+// @summers-kiss: #0EA795;
+
+
+// @chalk-border: #ACA588;
+// @chalk-light-blue: #4E92B0;
+// @chalk-middle-light: #50769E;
+// @chalk-middle-dark: #405B7A;
+// @chalk-dark-blue: #1D3743;
+
+@slate-gray: #3c454e;
+
+@background-main: @slate-gray;
+
+@header-color: @off-teal;
+@section-color: @cream;
+
+body {
+  margin: 0px;
+  background-image: url('/wedding/images/chalkboard-black.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+
+  // background-color: @background-main;
+}
+.mainBody {
+  min-width: 500px;
+}
+.App {
+  margin: 0;
+}
+
+.leftLace {
+  position: fixed;
+  top: -7px;
+  left: -7px;
+  width: 240px;
+}
+
+.rightLace {
+  position: fixed;
+  top: -7px;
+  right: -7px;
+  width: 240px;
+}
+
+.header-test {
+  font-family: 'Great Vibes', Helvetica, sans-serif;
+  position: fixed;
+  top: 0;
+  left: @Section-sides;
+  right: @Section-sides;
+  z-index: 1000;
+  height: @header-height;
+  text-align: center;
+  color: @header-color;
+
+  +main {
+    margin-top: @header-height;
+    position: relative;
+  }
+
+  .sectionLink {
+    margin-top: 30px;
+    .line1 {
+      font-size: 1.25em;
+    }
+    .line2 {
+      font-size: 2.25em;
+    }
+  }
+
+  .centerCrest {
+    margin-top: 20px;
+    font-weight: bold;
+    .line1 {
+      font-size: 1.75em;
+    }
+    .line2 {
+      font-size: 2.75em;
+    }
+  }
+}
+
+
+
+
+@test-height: 750px;
+
+.test-section {
+
+  min-height: @test-height;
+  background-color: @section-color;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  // margin-bottom: 10px;
+  > :first-child {
+    margin-top: 0;
+  }
+
+}
+
+.Section {
+
+  .content {
+    margin: 0px @Section-sides 0px @Section-sides;
+    left: 0;
+    right: 0;
+    // padding: 10px;
+    // margin-bottom: 10px;
+  // background-color: @section-color;
+
+    // border-style: solid;
+    // border-width: 1px;
+    // background-color: @section-color;
+    // border-color: @header-color;
+
+
+    > :first-child {
+      margin-top: 0;
+    }
+  }
+}
+

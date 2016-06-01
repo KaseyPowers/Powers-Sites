@@ -1,0 +1,12 @@
+{
+  "projects": [
+    {
+      "name": "wedding",
+      "src": "./wedding"
+    },
+    {
+      "name": "thefamilypowers",
+      "src": "./thefamilypowers"
+    }
+  ]
+}
