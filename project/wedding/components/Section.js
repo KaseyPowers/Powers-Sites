@@ -92,7 +92,14 @@ var Section = React.createClass({
         <div
           className='content'
           style={ sectionStyle() }
-          ref={(ref) => this.sectionRef = ref}>
+          ref={(ref) => {
+            // if(ref === null ) {
+            //   console.log(this.props.name + ': unset');
+            // } else {
+            //   console.log(this.props.name + ': set');
+            // }
+            this.sectionRef = ref
+          }}>
           {this.props.children}
         </div>
         { spacer() }

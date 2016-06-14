@@ -33,6 +33,8 @@
 //   </Provider>,
 //   root
 // )
+// import 'bootstrap-webpack';
+
 
 // Core components
 import React from 'react'
@@ -44,10 +46,10 @@ import App from './components/App'
 import './index.less'
 import './images'
 
-import fonts from 'google-fonts'
-fonts.add({
-  'Great Vibes': true
-});
+// import fonts from 'google-fonts'
+// fonts.add({
+//   'Great Vibes': true
+// });
 
 
 // import App from './components/App'

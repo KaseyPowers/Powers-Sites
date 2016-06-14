@@ -1,4 +1,7 @@
-@header-height: 120px;
+@import url(https://fonts.googleapis.com/css?family=Great+Vibes);
+@import "~bootstrap/less/bootstrap";
+
+@header-height: 140px;
 @Section-sides: 75px;
 
 @teal: #009494;
@@ -6,36 +9,23 @@
 @cream: #f1eae0;
 @ivory: #fffff0;
 
+@temp-blue: #549DB7;
+
 @cream-green: #e0f1ea;
 @cream-blue: #e0f0f1;
-
-// @owl-yellow: #D0B976;
-// @poster: #F39653;
-// @orange: #D4643C;
-// @lime-mouse: #7E9470;
-// @summers-kiss: #0EA795;
-
-
-// @chalk-border: #ACA588;
-// @chalk-light-blue: #4E92B0;
-// @chalk-middle-light: #50769E;
-// @chalk-middle-dark: #405B7A;
-// @chalk-dark-blue: #1D3743;
 
 @slate-gray: #3c454e;
 
 @background-main: @slate-gray;
 
-@header-color: @off-teal;
+@header-color: @temp-blue;
 @section-color: @cream;
 
 body {
   margin: 0px;
-  background-image: url('/wedding/images/chalkboard-black.jpg');
+  background-image: url('/wedding/images/orig-chalk-board.png');
   background-attachment: fixed;
   background-size: cover;
-
-  // background-color: @background-main;
 }
 .mainBody {
   min-width: 500px;
@@ -46,52 +36,50 @@ body {
 
 .leftLace {
   position: fixed;
-  top: -7px;
-  left: -7px;
-  width: 240px;
+  top: -6px;
+  left: -6px;
+  width: 275px;
 }
 
 .rightLace {
   position: fixed;
-  top: -7px;
-  right: -7px;
-  width: 240px;
+  top: -6px;
+  right: -6px;
+  transform: scale(-1, 1);
+  width: 275px;
 }
 
 .header-test {
-  font-family: 'Great Vibes', Helvetica, sans-serif;
+  font-family: 'Great Vibes', cursive;
   position: fixed;
   top: 0;
   left: @Section-sides;
   right: @Section-sides;
   z-index: 1000;
-  height: @header-height;
   text-align: center;
   color: @header-color;
+  margin: 0px 100px;
 
   +main {
-    margin-top: @header-height;
     position: relative;
   }
 
   .sectionLink {
-    margin-top: 30px;
-    .line1 {
-      font-size: 1.25em;
-    }
-    .line2 {
-      font-size: 2.25em;
+    font-size: 2em;
+    // border-width: 2px;
+    // border-style: solid;
+    &:hover {
+      color: @cream;
     }
   }
 
   .centerCrest {
-    margin-top: 20px;
     font-weight: bold;
     .line1 {
-      font-size: 1.75em;
+      font-size: 2.75em;
     }
     .line2 {
-      font-size: 2.75em;
+      font-size: 3.75em;
     }
   }
 }
@@ -108,7 +96,6 @@ body {
   padding: 10px;
   border-style: solid;
   border-width: 1px;
-  // margin-bottom: 10px;
   > :first-child {
     margin-top: 0;
   }
@@ -121,16 +108,6 @@ body {
     margin: 0px @Section-sides 0px @Section-sides;
     left: 0;
     right: 0;
-    // padding: 10px;
-    // margin-bottom: 10px;
-  // background-color: @section-color;
-
-    // border-style: solid;
-    // border-width: 1px;
-    // background-color: @section-color;
-    // border-color: @header-color;
-
-
     > :first-child {
       margin-top: 0;
     }

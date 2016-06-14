@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "autoprefixer-loader": "^3.2.0",
+    "bootstrap-less": "^3.3.8",
     "clean-webpack-plugin": "^0.1.9",
     "css-loader": "^0.23.1",
     "dateformat": "^1.0.12",
@@ -31,6 +32,8 @@
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "style-loader": "^0.13.1",
+    "velocity-animate": "^1.2.3",
+    "velocity-react": "^1.1.5",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1"
   },

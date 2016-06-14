@@ -15,8 +15,8 @@ var sectionList = [
     section: <TestSection text='Bridal Party' />
   },
   {
-    name: 'The Main Event',
-    section: <TestSection text='The Main Event' />
+    name: 'The Event',
+    section: <TestSection text='The Event' />
   },
   {
     name: 'Registry',
@@ -60,8 +60,12 @@ var WeddingSections = React.createClass({
       }.bind(this)
     );
 
+    let mainStyle = {
+      marginTop: this.props.offsetTop
+    };
+
     return (
-      <main>
+      <main style={ mainStyle }>
         {buildSections }
       </main>
     )
