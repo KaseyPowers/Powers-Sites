@@ -26,10 +26,9 @@ body {
   background-image: url('/wedding/images/orig-chalk-board.png');
   background-attachment: fixed;
   background-size: cover;
+  overflow-x: hidden;
 }
-.mainBody {
-  min-width: 500px;
-}
+
 .App {
   margin: 0;
 }
@@ -68,8 +67,13 @@ body {
     font-size: 2em;
     // border-width: 2px;
     // border-style: solid;
-    &:hover {
-      color: @cream;
+    a {
+      color: inherit;
+
+      &:hover, &:focus {
+        color: @cream;
+        text-decoration: inherit;
+      }
     }
   }
 
@@ -84,33 +88,53 @@ body {
   }
 }
 
-
-
-
 @test-height: 750px;
 
 .test-section {
 
   min-height: @test-height;
+  color: @cream-blue;
   background-color: @section-color;
   padding: 10px;
-  border-style: solid;
-  border-width: 1px;
-  > :first-child {
-    margin-top: 0;
-  }
+  // border-style: solid;
+  // border-width: 1px;
 
 }
 
 .Section {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
 
   .content {
     margin: 0px @Section-sides 0px @Section-sides;
-    left: 0;
-    right: 0;
-    > :first-child {
-      margin-top: 0;
-    }
+    // left: 0;
+    // right: 0;
+    min-height: @test-height;
+    color: @cream-blue;
+    padding: 10px;
   }
 }
 
+.Section-enter{
+  right: 100%;
+  left: -100%;
+  transition: right .5s ease-in, left .5s ease-in;
+}
+
+.Section-enter.Section-enter-active{
+  right: 0%;
+  left: 0%;
+}
+
+.Section-leave{
+  right: 0%;
+  left: 0%;
+  transition: right .5s ease-in, left .5s ease-in;
+}
+
+.Section-leave.Section-leave-active{
+  right: -100%;
+  left: 100%;
+}

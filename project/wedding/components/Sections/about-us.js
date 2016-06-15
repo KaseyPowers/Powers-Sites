@@ -1,12 +1,11 @@
 import React from 'react'
 import Section from '../Section'
 
-var TestSection = React.createClass({
+var AboutUs = React.createClass({
   render: function() {
     return (
       <div>
-        <h2>Test Section</h2>
-        <h4>{this.props.text}</h4>
+        <h4>About Us</h4>
       </div>
     )
     // return (
@@ -17,4 +16,4 @@ var TestSection = React.createClass({
   }
 });
 
-export default TestSection
+export default AboutUs

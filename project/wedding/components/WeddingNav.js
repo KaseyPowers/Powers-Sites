@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Link } from 'react-router'
 import _ from 'lodash'
 
 import CenterCrest from './navComponents/CenterCrest'
@@ -24,6 +25,8 @@ var WeddingNav = React.createClass({
       sectionStyle.paddingTop = (this.navRef.offsetHeight - starterStyle.marginTop)/6;
     }
 
+    let myPrefix = this.props.prefix.length > 1 ? this.props.prefix + '/' : this.props.prefix;
+
     var totalLinks = _.size(this.props.sections);
     let leftSize = Math.floor(totalLinks/2);
     let rightSize = totalLinks - leftSize;
@@ -34,13 +37,15 @@ var WeddingNav = React.createClass({
     let leftLinks = [];
     let rightLinks = [];
 
-    _.forEach(this.props.sections, function(value, key) {
+    _.forEach(this.props.sections, function(key) {
       let addLeft = leftLinks.length < leftSize;
       let linkClass = 'col-md-'+ (addLeft ? leftCol : rightCol);
 
       (addLeft ? leftLinks : rightLinks).push(
-        <div className={linkClass} key={key} style={sectionStyle}>
-          <SectionLink name={key} targetScroll={value.scrollToggle} targetElm={value.element}/>
+        <div className={linkClass + ' sectionLink'} key={key.path} style={sectionStyle}>
+          <Link to={myPrefix + key.path}>
+            {key.name}
+          </Link>
         </div>
       );
     });
@@ -51,8 +56,8 @@ var WeddingNav = React.createClass({
       <div
         ref={(ref) => this.navRef = ref }
         className='header-test'>
-        <img className="leftLace" src={'wedding/images/teal-lace.svg'}/>
-        <img className="rightLace" src={'wedding/images/teal-lace.svg'}/>
+        <img className="leftLace" src={myPrefix + 'images/teal-lace.svg'}/>
+        <img className="rightLace" src={myPrefix + 'images/teal-lace.svg'}/>
         <div className="row">
           <div className="col-xs-4">
             <div className="row">

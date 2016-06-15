@@ -2,11 +2,13 @@
   "projects": [
     {
       "name": "wedding",
-      "src": "./wedding"
+      "src": "./wedding",
+      "path": "/wedding/"
     },
     {
       "name": "thefamilypowers",
-      "src": "./thefamilypowers"
+      "src": "./thefamilypowers",
+      "path": "/"
     }
   ]
 }
