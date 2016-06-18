@@ -1,11 +1,22 @@
-var _ = require('lodash');
+// Core components
+import React from 'react'
+import { render } from 'react-dom'
 
-var strings = [
-  'hello',
-  'world',
-  'powers family'
-];
+var root = document.createElement('div');
+document.body.appendChild(root);
 
-_.forEach(strings, function(str) {
-  console.log(str);
+var App = React.createClass({
+  render: function() {
+    return (
+      <div >
+        The Family Powers is under construction
+      </div>
+    )
+  }
 });
+
+
+render(
+  <App />,
+  root
+)

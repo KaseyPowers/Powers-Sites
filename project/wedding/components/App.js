@@ -4,7 +4,9 @@ import { Router, IndexRoute, Route, browserHistory } from 'react-router'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import WeddingNav from './NavComponents';
-import Pages from './Pages';
+// import Pages from './Pages';
+const Pages = [];
+import UnderConstruction from './Pages/under-construction';
 
 const startingNavHeight = 150;
 
@@ -85,17 +87,10 @@ const WeddingApp = React.createClass({
 var App = React.createClass({
   render: function() {
     let myPrefix = prefix.length > 1 ? prefix + '/' : prefix;
-    let PageRoutes = _.reduce(Pages, function(result, page, index) {
-      if (index === 0) {
-         result.push(<IndexRoute key={'Index ' + page.name} component={page.component}  />);
-      }
-      result.push(<Route key={page.name} path={page.path} component={page.component} />);
-      return result;
-    }, []);
     return (
       <Router history={browserHistory}>
         <Route path={prefix} component={WeddingApp}>
-          {PageRoutes}
+          <IndexRoute component={UnderConstruction}  />
         </Route>
       </Router>
     )
