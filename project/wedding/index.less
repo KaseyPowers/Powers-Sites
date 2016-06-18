@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Great+Vibes);
+@import 'https://fonts.googleapis.com/css?family=Allura|Dancing+Script|Great+Vibes|Homemade+Apple';
 @import "~bootstrap/less/bootstrap";
 
 @header-height: 140px;
@@ -29,27 +29,26 @@ body {
   overflow-x: hidden;
 }
 
-.App {
-  margin: 0;
+.text-fancy {
+  font-family: 'Great Vibes', cursive;
 }
 
-.leftLace {
-  position: fixed;
-  top: -6px;
-  left: -6px;
-  width: 275px;
+.text-test-a {
+  font-family: 'Allura', cursive;
+  // font-size: 30px;
 }
-
-.rightLace {
-  position: fixed;
-  top: -6px;
-  right: -6px;
-  transform: scale(-1, 1);
-  width: 275px;
+.text-test-b {
+  font-family: 'Homemade Apple', cursive;
+  // font-size: 30px;
+}
+.text-test-c {
+  font-family: 'Dancing Script', cursive;
+  // font-size: 30px;
 }
 
 .header-test {
-  font-family: 'Great Vibes', cursive;
+  @margin-sides: 100px;
+  min-width: (800px - 2 * @Section-sides - 2 * @margin-sides);
   position: fixed;
   top: 0;
   left: @Section-sides;
@@ -57,7 +56,7 @@ body {
   z-index: 1000;
   text-align: center;
   color: @header-color;
-  margin: 0px 100px;
+  margin: 0px @margin-sides;
 
   +main {
     position: relative;
@@ -77,6 +76,21 @@ body {
     }
   }
 
+  .leftLace {
+    position: fixed;
+    top: -6px;
+    left: -6px;
+    width: 275px;
+  }
+
+  .rightLace {
+    position: fixed;
+    top: -6px;
+    right: -6px;
+    transform: scale(-1, 1);
+    width: 275px;
+  }
+
   .centerCrest {
     font-weight: bold;
     .line1 {
@@ -88,20 +102,8 @@ body {
   }
 }
 
-@test-height: 750px;
-
-.test-section {
-
-  min-height: @test-height;
-  color: @cream-blue;
-  background-color: @section-color;
-  padding: 10px;
-  // border-style: solid;
-  // border-width: 1px;
-
-}
-
 .Section {
+  min-width: 800px;
   position: absolute;
   left: 0;
   right: 0;
@@ -111,30 +113,47 @@ body {
     margin: 0px @Section-sides 0px @Section-sides;
     // left: 0;
     // right: 0;
-    min-height: @test-height;
-    color: @cream-blue;
+    // color: @cream-blue;
     padding: 10px;
   }
 }
 
-.Section-enter{
+.Section-right-enter{
   right: 100%;
   left: -100%;
   transition: right .5s ease-in, left .5s ease-in;
+  &.Section-right-enter-active{
+    right: 0%;
+    left: 0%;
+  }
 }
 
-.Section-enter.Section-enter-active{
-  right: 0%;
-  left: 0%;
-}
-
-.Section-leave{
+.Section-right-leave{
   right: 0%;
   left: 0%;
   transition: right .5s ease-in, left .5s ease-in;
+  &.Section-right-leave-active{
+    right: -100%;
+    left: 100%;
+  }
 }
 
-.Section-leave.Section-leave-active{
+.Section-left-enter{
   right: -100%;
   left: 100%;
+  transition: right .5s ease-in, left .5s ease-in;
+  &.Section-left-enter-active{
+    right: 0%;
+    left: 0%;
+  }
+}
+
+.Section-left-leave{
+  right: 0%;
+  left: 0%;
+  transition: right .5s ease-in, left .5s ease-in;
+  &.Section-left-leave-active{
+    right: 100%;
+    left: -100%;
+  }
 }

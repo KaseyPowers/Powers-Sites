@@ -1,0 +1,29 @@
+
+@width: 200px;
+@height: 325px;
+
+
+@cream: #f1eae0;
+@cream-blue: #e0f0f1;
+
+.about-us {
+  color: @cream-blue;
+  font-size: 25px;
+  .image-container {
+    padding-top: (@height / 2 - 10px);
+    border-radius: 50%;
+    background-color: @cream-blue;
+    height: @height;
+    width: @width;
+    margin: 10px;
+    color: black;
+  }
+  .float-left {
+    float: left;
+    clear: left;
+  }
+  .float-right {
+    float: right;
+    clear: right;
+  }
+}

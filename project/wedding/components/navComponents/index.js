@@ -1,11 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Link } from 'react-router'
 import _ from 'lodash'
 
-import CenterCrest from './navComponents/CenterCrest'
-import SectionLink from './navComponents/SectionLink'
-
+import CenterCrest from './CenterCrest'
 
 const starterStyle = {
   marginTop: 20
@@ -55,7 +52,7 @@ var WeddingNav = React.createClass({
 
       <div
         ref={(ref) => this.navRef = ref }
-        className='header-test'>
+        className='header-test text-fancy'>
         <img className="leftLace" src={myPrefix + 'images/teal-lace.svg'}/>
         <img className="rightLace" src={myPrefix + 'images/teal-lace.svg'}/>
         <div className="row">

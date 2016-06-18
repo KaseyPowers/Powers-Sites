@@ -1,13 +1,12 @@
 import React from 'react'
 import _ from 'lodash'
-import { Router, IndexRedirect, Route, browserHistory } from 'react-router'
+import { Router, IndexRoute, Route, browserHistory } from 'react-router'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import WeddingNav from './WeddingNav';
+import WeddingNav from './NavComponents';
+import Pages from './Pages';
 
-// import TestSection from './Sections/TestSection'
-
-import {AboutUs, TestSection} from './Sections';
+const startingNavHeight = 150;
 
 let siteName = document.domain;
 let startIndex = siteName.indexOf('www.');
@@ -16,30 +15,6 @@ siteName = siteName.substring(startIndex);
 siteName = _.trimEnd(siteName, '.com');
 
 const prefix = (siteName === 'localhost' || siteName === 'thefamilypowers') ? '/wedding' : '/';
-
-
-var sectionList = [
-  {
-    name: 'About Us',
-    path: 'about-us',
-    section: <AboutUs/>
-  },
-  {
-    name: 'Bridal Party',
-    path: 'bridal-party',
-    section: <TestSection text='Bridal Party' />
-  },
-  {
-    name: 'The Event',
-    path: 'the-event',
-    section: <TestSection text='The Event' />
-  },
-  {
-    name: 'Registry',
-    path: 'registry',
-    section: <TestSection text='Registry' />
-  }
-];
 
 
 const WeddingApp = React.createClass({
@@ -58,7 +33,7 @@ const WeddingApp = React.createClass({
   },
   getInitialState: function() {
     return {
-      headerHeight: 140,
+      headerHeight: startingNavHeight,
       sections: {}
     }
   },
@@ -70,7 +45,6 @@ const WeddingApp = React.createClass({
     window.removeEventListener('resize', this.resizeEventHandler);
   },
   setNavRef: function(navRef) {
-    console.log('State was: ' + this.state.headerHeight + '\n Setting to: ' + navRef.offsetHeight);
     this.setState({
       navRef: navRef,
       headerHeight: navRef.offsetHeight
@@ -80,36 +54,29 @@ const WeddingApp = React.createClass({
     let mainStyle = {
       marginTop: this.state.navRef ? this.state.navRef.offsetHeight : this.state.headerHeight
     };
+    let currentPage = _.trimStart(this.props.location.pathname, prefix);
+    currentPage = _.trimStart(currentPage, '/');
+
+    let currentIndex = _.findIndex(Pages, ['path', currentPage]);
+    let prevIndex = this.previousIndex || 0;
+    const transitionName = 'Section-' + (prevIndex < currentIndex ? 'right' : 'left');
+    this.previousIndex = currentIndex;
+
+
     return (
       <div>
-        <WeddingNav sections={sectionList} prefix={prefix} setNavRef={this.setNavRef}/>
+        <WeddingNav sections={Pages} prefix={prefix} setNavRef={this.setNavRef}/>
         <ReactCSSTransitionGroup
           component="div"
-          transitionName="Section"
+          transitionName={transitionName}
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
           style={mainStyle}
         >
           {React.cloneElement(this.props.children, {
-            key: location.pathname
+            key: this.props.location.pathname
           })}
         </ReactCSSTransitionGroup>
-      </div>
-    )
-  }
-});
-
-const TestPage = React.createClass({
-  render() {
-    let sectionItem = _.find(sectionList, ['path', this.props.params.id]);
-    let section = sectionItem ? sectionItem.section : (
-      <TestSection text='Default' />
-    );
-    return (
-      <div className="Section">
-        <div className="content">
-            {section}
-        </div>
       </div>
     )
   }
@@ -118,11 +85,17 @@ const TestPage = React.createClass({
 var App = React.createClass({
   render: function() {
     let myPrefix = prefix.length > 1 ? prefix + '/' : prefix;
+    let PageRoutes = _.reduce(Pages, function(result, page, index) {
+      if (index === 0) {
+         result.push(<IndexRoute key={'Index ' + page.name} component={page.component}  />);
+      }
+      result.push(<Route key={page.name} path={page.path} component={page.component} />);
+      return result;
+    }, []);
     return (
       <Router history={browserHistory}>
         <Route path={prefix} component={WeddingApp}>
-          <IndexRedirect to={myPrefix + sectionList[0].path} />
-          <Route path=":id" component={TestPage} />
+          {PageRoutes}
         </Route>
       </Router>
     )
