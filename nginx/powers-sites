@@ -5,14 +5,14 @@ server {
 		try_files $uri index.html;
 	}
 	location /wedding {
-		root /home/kasey/workspace/powers-sites/wedding;
+		root /home/kasey/workspace/powers-sites/build/wedding;
 		try_files $uri index.html;
 	}
 	location /commons.js {
-		root /home/kasey/workspace/powers-sites;
+		root /home/kasey/workspace/powers-sites/build/;
 	}
 	location /fonts {
-		root /home/kasey/workspace/powers-sites/fonts;
+		root /home/kasey/workspace/powers-sites/build/fonts;
 	}
 }
 
@@ -27,9 +27,9 @@ server {
 		try_files $uri index.html;
 	}
 	location /commons.js {
-		root /home/kasey/workspace/powers-sites/commons.js;
+		root /home/kasey/workspace/powers-sites/build;
 	}
 	location /fonts {
-		root /home/kasey/workspace/powers-sites/fonts;
+		root /home/kasey/workspace/powers-sites/build/fonts;
 	}
 }
