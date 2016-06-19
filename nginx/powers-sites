@@ -1,18 +1,13 @@
 server {
 	server_name thefamilypowers.com www.thefamilypowers.com;
-	root /home/kasey/workspace/powers-sites/build/thefamilypowers;
+	root /home/kasey/workspace/powers-sites/build;
+	location = / {
+		index /thefamilypowers/index.html;
+	}
+	location /images {
+		try_files $uri /thefamilypowers/$uri 404;
+	}
 	location / {
-		try_files $uri /index.html;
-	}
-	location /wedding {
-		root /home/kasey/workspace/powers-sites/build/wedding;
-		try_files $uri /index.html;
-	}
-	location /commons.js {
-		root /home/kasey/workspace/powers-sites/build;
-	}
-	location /fonts {
-		root /home/kasey/workspace/powers-sites/build/fonts;
 	}
 }
 
@@ -20,19 +15,11 @@ server {
 	server_name onceuponapowers.com www.onceuponapowers.com;
 	root /home/kasey/workspace/powers-sites/build;
 	location = / {
-		index wedding/index.html;
+		index /wedding/index.html;
+	}
+	location /images {
+		try_files $uri /wedding/$uri 404;
 	}
 	location / {
-
 	}
-	location /wedding {
-		root /home/kasey/workspace/powers-sites/build/wedding;
-		try_files $uri /index.html;
-	}
-#	location /commons.js {
-#		root /home/kasey/workspace/powers-sites/build;
-#	}
-#	location /fonts {
-#		root /home/kasey/workspace/powers-sites/build/fonts;
-#	}
 }
