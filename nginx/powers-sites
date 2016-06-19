@@ -9,7 +9,7 @@ server {
 		try_files $uri index.html;
 	}
 	location /commons.js {
-		root /home/kasey/workspace/powers-sites/build/;
+		root /home/kasey/workspace/powers-sites/build;
 	}
 	location /fonts {
 		root /home/kasey/workspace/powers-sites/build/fonts;
