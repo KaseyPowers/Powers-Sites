@@ -8,11 +8,11 @@ server {
 		try_files $uri /thefamilypowers/$uri =404;
 	}
 	location / {
-		try_files $uri /thefamilypowers/$uri /thefamilypowers/index.html =404;
+		try_files $uri /thefamilypowers/$uri /thefamilypowers/index.htm;
 	}
 	location /wedding {
-		root /home/kasey/workspace/powers-sites/build/wedding;
-		try_files $uri /index.html =404;
+#		root /home/kasey/workspace/powers-sites/build/wedding;
+		try_files $uri /wedding/index.html;
 	}
 }
 
