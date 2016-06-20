@@ -6,6 +6,11 @@
       "path": "/wedding/"
     },
     {
+      "name": "under-construction",
+      "src": "./under-construction",
+      "path": "/under-construction/"
+    },
+    {
       "name": "thefamilypowers",
       "src": "./thefamilypowers",
       "path": "/"

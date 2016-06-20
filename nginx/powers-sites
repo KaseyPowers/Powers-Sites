@@ -1,0 +1,54 @@
+# server {
+# 	server_name thefamilypowers.com www.thefamilypowers.com;
+# 	root /home/kasey/workspace/powers-sites/build;
+# 	location = / {
+# 		index /thefamilypowers/index.html;
+# 	}
+# 	location /images {
+# 		try_files $uri /thefamilypowers/$uri 404;
+# 	}
+# 	location / {
+# 	}
+# }
+
+# server {
+# 	server_name onceuponapowers.com www.onceuponapowers.com;
+# 	root /home/kasey/workspace/powers-sites/build;
+# 	location = / {
+# 		index /wedding/index.html;
+# 	}
+# 	location /images {
+# 		try_files $uri /wedding/$uri /wedding/index.html 404;
+# 	}
+# 	location / {
+# 		try_files $uri /wedding/$uri /wedding/index.html 404;
+# 	}
+# }
+
+server {
+	server_name thefamilypowers.com www.thefamilypowers.com;
+	root /home/kasey/workspace/powers-sites/build;
+	location = / {
+		index /wedding/index.html;
+	}
+	location /images {
+		try_files $uri /wedding/$uri 404;
+	}
+	location / {
+		try_files $uri /wedding/$uri /wedding/index.html 404;
+	}
+}
+
+server {
+	server_name onceuponapowers.com www.onceuponapowers.com;
+	root /home/kasey/workspace/powers-sites/build;
+	location = / {
+		index /under-construction/index.html;
+	}
+	location /images {
+		try_files $uri /under-construction/$uri 404;
+	}
+	location / {
+		try_files $uri /under-construction/$uri /under-construction/index.html 404;
+	}
+}
