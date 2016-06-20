@@ -32,10 +32,10 @@ server {
 		index /wedding/index.html;
 	}
 	location /images {
-		try_files $uri /wedding/$uri 404;
+		try_files $uri /wedding/$uri =404;
 	}
 	location / {
-		try_files $uri /wedding/$uri /wedding/index.html 404;
+		try_files $uri /wedding/$uri /wedding/index.html =404;
 	}
 }
 
@@ -46,9 +46,9 @@ server {
 		index /under-construction/index.html;
 	}
 	location /images {
-		try_files $uri /under-construction/$uri 404;
+		try_files $uri /under-construction/$uri =404;
 	}
 	location / {
-		try_files $uri /under-construction/$uri /under-construction/index.html 404;
+		try_files $uri /under-construction/$uri /under-construction/index.html =404;
 	}
 }
