@@ -4,9 +4,11 @@ import {fitBounds} from 'google-map-react/utils';
 import ReactDom from 'react-dom';
 import mapStyles from './mapStyles';
 
+import keys from '../../../../keys';
+
 import _ from 'lodash';
 
-const appKey = '';
+const appKey = keys.googleMaps;
 
 const locations = [
   {
@@ -78,6 +80,9 @@ var ExampleMarker = React.createClass({
   render() {
     return (
       <div style={greatPlaceStyle}>
+        <span className="wedding-icon icon-restaurant"></span>
+        <span className="wedding-icon icon-building"></span>
+        <span className="wedding-icon icon-diamond"></span>
         {this.props.text}
       </div>
     );

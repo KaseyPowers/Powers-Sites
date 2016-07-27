@@ -42,15 +42,16 @@ module.exports = {
         loader: 'file?name=[path]/[name].[ext]'
       },
       {
-        // test should match the following:
-        //
-        //  '../fonts/availity-font.eot?18704236'
-        //  '../fonts/availity-font.eot'
-        // ((?<=\/images\/).*\.svg$)|((ttf|woff|woff2|eot)$)
         test: function(absPath) {
-          return !(/\/project\/.*\/images\//.test(absPath)) && /\.(ttf|woff|woff2|eot|svg)/.test(absPath);
+          return (/\/node_modules\//.test(absPath)) && /\.(ttf|woff|woff2|eot|svg)/.test(absPath);
         },
         loader: 'file?name=fonts/[name].[ext]'
+      },
+      {
+        test: function(absPath) {
+          return !(/\/node_modules\//.test(absPath)) && !(/\/project\/.*\/images\//.test(absPath)) && /\.(ttf|woff|woff2|eot|svg)/.test(absPath);
+        },
+        loader: 'file?name=[path]/[name].[ext]'
       }
     ]
   },
