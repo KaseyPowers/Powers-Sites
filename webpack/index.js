@@ -3,6 +3,8 @@ var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 // var HtmlWebpackPlugin = require('html-webpack-plugin');
+var autoprefixer = require('autoprefixer');
+var NpmImportPlugin = require('less-plugin-npm-import');
 
 var entryOutput = require('./utils/entry-output');
 var htmlConfig = require('./utils/htmlConfig');
@@ -12,6 +14,16 @@ module.exports = {
   context: path.join(process.cwd(),  'project'),
   entry: entryOutput.entry,
   output: entryOutput.output,
+  resolve: {
+    root: [path.join(process.cwd(),  'project')],
+    modulesDirectories: ['bower_components', 'node_modules'],
+    extensions: ['', '.js', '.jsx', '.json', '.css', '.less']
+  },
+  resolveLoader: {
+    root: [
+      path.join(process.cwd(), './node_modules') // parent project
+    ]
+  },
   module: {
     loaders: [
       {test: /\.html$/, loader: 'html'},
@@ -32,14 +44,16 @@ module.exports = {
       {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract(
-          // activate source maps via loader query
-          'css?sourceMap!' +
-          'less?sourceMap'
+          'style-loader',
+          'css-loader!autoprefixer-loader?{browsers: ["last 3 versions", "ie 8", "ie 9", "> 1%"]}!less-loader',
+          {
+            publicPath: '/'
+          }
         )
       },
       {
         test: /(\/project\/.*\/images\/.*\.svg)|(\.(jpe?g|png|gif))$/,
-        loader: 'file?name=[path]/[name].[ext]'
+        loader: 'file?name=[path][name].[ext]'
       },
       {
         test: function(absPath) {
@@ -51,8 +65,18 @@ module.exports = {
         test: function(absPath) {
           return !(/\/node_modules\//.test(absPath)) && !(/\/project\/.*\/images\//.test(absPath)) && /\.(ttf|woff|woff2|eot|svg)/.test(absPath);
         },
-        loader: 'file?name=[path]/[name].[ext]'
+        loader: 'file?name=[path][name].[ext]'
       }
+    ]
+  },
+  postcss: function() {
+    return [autoprefixer({browsers: ['last 2 versions', 'ie 9-11']})];
+  },
+  lessLoader: {
+    lessPlugins: [
+      new NpmImportPlugin({
+        prefix: '~'
+      })
     ]
   },
   plugins: [
