@@ -1,52 +1,6 @@
 @import 'mixins.less';
-
-@font-face {
-  font-family: 'fontello';
-  src: url('./fonts/fontello.eot?89623643');
-  src: url('./fonts/fontello.eot?89623643#iefix') format('embedded-opentype'),
-       url('./fonts/fontello.woff2?89623643') format('woff2'),
-       url('./fonts/fontello.woff?89623643') format('woff'),
-       url('./fonts/fontello.ttf?89623643') format('truetype'),
-       url('./fonts/fontello.svg?89623643#fontello') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-.wedding-icon {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  /* opacity: .8; */
-
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-}
-
-.icon-restaurant:before { content: '\e832'; } /* '' */
-.icon-building:before { content: '\f0f7'; } /* '' */
-.icon-diamond:before { content: '\f219'; } /* '' */
-
+@import 'fonts/fonts.less';
+@import 'components/EventMap/map.less';
 
 @header-height: 140px;
 @Section-sides: 75px;
@@ -95,15 +49,15 @@ body {
 
 .header-test {
   @margin-sides: 100px;
-  min-width: (800px - 2 * @Section-sides - 2 * @margin-sides);
-  position: fixed;
+  min-width: 800px;
+  position: absolute;;
   top: 0;
-  left: @Section-sides;
-  right: @Section-sides;
+  left: 0;
+  right: 0;
   z-index: 1000;
   text-align: center;
   color: @header-color;
-  margin: 0px @margin-sides;
+  padding: 0px (@Section-sides + @margin-sides);
 
   +main {
     position: relative;
@@ -124,14 +78,14 @@ body {
   }
 
   .leftLace {
-    position: fixed;
+    position: absolute;
     top: -6px;
     left: -6px;
     width: 275px;
   }
 
   .rightLace {
-    position: fixed;
+    position: absolute;
     top: -6px;
     right: -6px;
     transform: scale(-1, 1);
@@ -156,6 +110,7 @@ body {
   right: 0;
   text-align: center;
   color: @cream-blue;
+  z-index: 1000;
 
   .content {
     position: relative;
@@ -205,10 +160,4 @@ body {
     right: 100%;
     left: -100%;
   }
-}
-
-
-.event-map-container{
-  position: relative;
-  height: 400px;
 }

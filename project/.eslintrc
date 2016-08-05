@@ -3,7 +3,7 @@
     "browser": true
   },
   "rules": {
-    "jsx-no-undef",
-    jsx-uses-vars
+    "react/jsx-no-undef": 2,
+    "react/jsx-uses-vars": 2
   }
 }

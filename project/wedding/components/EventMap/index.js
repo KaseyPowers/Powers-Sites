@@ -1,8 +1,11 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
 import GoogleMap from 'google-map-react';
-import {fitBounds} from 'google-map-react/utils';
-import ReactDom from 'react-dom';
+import {
+  fitBounds
+} from 'google-map-react/utils';
 import mapStyles from './mapStyles';
+
+import EventLocation from './EventLocation';
 
 import keys from '../../../../keys';
 
@@ -13,115 +16,82 @@ const appKey = keys.googleMaps;
 const locations = [
   {
     pos: {
-      lat: 28.567543,
-      lng: -81.355481
+      lat: 28.567496,
+      lng: -81.355428
     },
-    name: 'veneu'
-  },
-  {
+    name: 'Henry P Lou Gardens',
+    type: 'venue',
+    mainLink: 'http://leugardens.org',
+    mapLink:  'https://www.google.com/maps/place/Harry+P+Leu+Gardens/@28.5675717,-81.3575736,17z/data=!3m1!4b1!4m5!3m4!1s0x88e77abc1a981009:0x9696d656a16a6fdc!8m2!3d28.5675717!4d-81.3553849'
+  }, {
     pos: {
-      lat: 28.541245,
-      lng: -81.378741
+      lat: 28.538962,
+      lng: -81.378658
     },
-    name: 'hotel1'
+    name: 'Grand Bohemian Hotel',
+    type: 'hotel',
+    mainLink: 'http://www.grandbohemianhotel.com/',
+    mapLink: 'https://www.google.com/maps/place/Grand+Bohemian+Hotel+Orlando,+Autograph+Collection/@28.5386985,-81.3808682,17z/data=!3m1!4b1!4m5!3m4!1s0x88e77b01fefd022b:0xca40d5cfca890aa4!8m2!3d28.5386985!4d-81.3786795'
+  }, {
+    pos: {
+      lat: 28.540703,
+      lng: -81.381379
+    },
+    name: 'Civiche',
+    type: 'restaurant',
+    mainLink: 'http://www.ceviche.com/orlando/',
+    mapLink: 'https://www.google.com/maps/place/Ceviche+Tapas+Orlando/@28.5404395,-81.3835465,17z/data=!3m1!4b1!4m5!3m4!1s0x88e77affcad41dd3:0xfa814ffa35234a96!8m2!3d28.5404395!4d-81.3813578'
   }
-]
-
-const lats = _.map(locations, 'pos.lat');
-const lngs = _.map(locations, 'pos.lng');
-const buffer = .00001;
-
-const bounds = {
-  nw:  {
-    lat: _.max(lats) + buffer,
-    lng: _.min(lngs) - buffer
-  },
-  se: {
-    lat: _.min(lats) - buffer,
-    lng: _.max(lngs) + buffer
-  }
-};
-const size = {
-  width: window.innerWidth - ((10 + 75) * 2),
-  height: 400
-}
-
-const {center, zoom} = fitBounds(bounds, size);
-
-
-const K_WIDTH = 100;
-const K_HEIGHT = 40;
-
-const greatPlaceStyle = {
-  // initially any map object has left top corner at lat lng coordinates
-  // it's on you to set object origin to 0,0 coordinates
-  position: 'absolute',
-  width: K_WIDTH,
-  height: K_HEIGHT,
-  left: -K_WIDTH / 2,
-  top: -K_HEIGHT / 2,
-
-  border: '5px solid #f44336',
-  borderRadius: K_HEIGHT,
-  backgroundColor: 'white',
-  textAlign: 'center',
-  color: '#3f51b5',
-  fontSize: 16,
-  fontWeight: 'bold',
-  padding: 4
-};
-
-
-var ExampleMarker = React.createClass({
-  propTypes: {
-    text: PropTypes.string
-  },
-  defaultProps: {},
-  render() {
-    return (
-      <div style={greatPlaceStyle}>
-        <span className="wedding-icon icon-restaurant"></span>
-        <span className="wedding-icon icon-building"></span>
-        <span className="wedding-icon icon-diamond"></span>
-        {this.props.text}
-      </div>
-    );
-  }
-})
+];
 
 var EventMap = React.createClass({
   componentDidMount: function() {
     this.hasLoaded = true;
   },
   render() {
+    const lats = _.map(locations, 'pos.lat');
+    const lngs = _.map(locations, 'pos.lng');
+    const buffer = .002;
+
+    const bounds = {
+      nw: {
+        lat: _.max(lats) + buffer,
+        lng: _.min(lngs)
+      },
+      se: {
+        lat: _.min(lats),
+        lng: _.max(lngs)
+      }
+    };
+    const size = {
+      width: window.innerWidth - ((10 + 75) * 2),
+      height: 500
+    }
+
+    const {center, zoom} = fitBounds(bounds, size);
     const markers = locations.map((location) => {
       return (
-        <ExampleMarker
-          key={location.name}
-          lat={location.pos.lat}
-          lng={location.pos.lng}
-          text={location.name}/>
+        <EventLocation
+          key = {location.name}
+          lat = {location.pos.lat}
+          lng = {location.pos.lng}
+          type = {location.type}
+          text = {location.name}
+          mainLink = {location.mainLink}
+          mapLink = {location.mapLink}/>
       );
     });
     return (
-      <div className='event-map-container'>
+      <div className = 'event-map-container' >
         <GoogleMap
-          options={
-            {
-              zoomControl: false,
-              scaleControl: false,
-              styles: mapStyles
-            }
-          }
-          // ref={(ref) => this.mapRef = ReactDom.findDOMNode(ref) }
-          // style= { getMapStyle() }
-          defaultCenter={center}
-          defaultZoom={zoom}
-          bootstrapURLKeys={
-            {
-              key: appKey
-            }
-          }>
+        options = {{
+          zoomControl: false,
+          scaleControl: false,
+          styles: mapStyles
+        }}
+        center = { center }
+        zoom = { zoom }
+        bootstrapURLKeys = { { key: appKey } } >
           {markers}
         </GoogleMap>
       </div>

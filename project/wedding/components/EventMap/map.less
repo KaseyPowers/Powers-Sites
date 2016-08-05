@@ -1,0 +1,138 @@
+@carrotSize: 6px;
+
+@circleSize: 40px;
+@expandedContainerHeight: 55px;
+@expandedContainerWidth: 125px;
+
+// const markerCarrotStyle = {
+//   position: 'absolute',
+//   width: 0,
+//   height: 0,
+//   bottom: 0,
+//   left: '50%',
+//   marginLeft: -6,
+//   borderStyle: 'solid',
+//   borderWidth: '6px 6px 0',
+//   borderTopColor: '#e0f0f1',
+//   color: 'transparent'
+// };
+
+@carrotSize: 8px;
+@carrotCompensate: 6px;
+
+.event-map-container{
+  position: relative;
+  height: 500px;
+  z-index: 2000;
+}
+
+.marker-carrot {
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -@carrotSize;
+  border-style: solid;
+  border-width: @carrotSize @carrotSize 0;
+  border-top-color: #e0f0f1;
+  color: transparent;
+}
+
+
+
+.location-marker {
+  position: absolute;
+  cursor: pointer;
+  min-width: @circleSize;
+  height: @circleSize + @carrotCompensate;
+  left: -(@circleSize / 2);
+  top: -(@circleSize + @carrotCompensate);
+  transition: all 0.5s ease;
+
+  .location-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: @circleSize;
+    height: @circleSize;
+    padding: 4px 0px;
+    border: 4px solid #e0f0f1;
+    border-radius: @circleSize / 2;
+    color: black;
+    background-color: white;
+    text-align: center;
+    transition: all 0.5s ease;
+    overflow: hidden;
+
+    .container-body {
+      text-align: left;
+      display: none;
+      overflow: hidden;;
+      opacity: 0;
+      min-width: 0px;
+      padding: 0px 4px;
+      vertical-align: middle;
+      transition: opacity 0.5s ease 1s, width 0.5s ease 1s;
+
+      .title {
+        font-size: 18px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .subtext {
+        font-size: 10px;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+    .container-right {
+      text-align: right;
+      vertical-align: middle;
+      padding: 2px;
+
+      .container-main {
+        display: inherit;
+        font-size: 20px;
+      }
+      .container-map {
+        display: none;
+        font-size: 14px;
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+        &:hover {
+          background-color: black;
+          color: white;
+          border-radius: 25px;
+        }
+      }
+    }
+  }
+  &:hover {
+    height: @expandedContainerHeight + @carrotSize;
+    top: -(@expandedContainerHeight + @carrotSize);
+    z-index: 100;
+    .location-container {
+      min-width: @expandedContainerWidth;
+      height: @expandedContainerHeight;
+      border-radius: 5px;
+      .container-body {
+        display: table-cell;
+        opacity: 1;
+        min-width: @expandedContainerWidth;
+      }
+      .container-right {
+        display: table-cell;
+        padding: 0px;
+        font-size: 14px;
+        .container-main {
+          display: none;
+        }
+        .container-map {
+          display: block;
+        }
+      }
+    }
+  }
+}
