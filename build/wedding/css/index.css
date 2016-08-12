@@ -3,13 +3,7 @@
   font-size: 25px;
 }
 .about-us .image-container {
-  padding-top: 152.5px;
-  border-radius: 50%;
-  background-color: #e0f0f1;
-  height: 325px;
   width: 200px;
-  margin: 10px;
-  color: black;
 }
 .about-us .float-left {
   float: left;

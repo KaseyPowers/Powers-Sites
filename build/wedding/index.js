@@ -145,7 +145,6 @@ webpackJsonp([2],{
 	  displayName: 'App',
 
 	  render: function render() {
-	    var myPrefix = prefix.length > 1 ? prefix + '/' : prefix;
 	    var PageRoutes = _lodash2.default.reduce(_Pages2.default, function (result, page, index) {
 	      if (index === 0) {
 	        result.push(_react2.default.createElement(_reactRouter.IndexRoute, { key: 'Index ' + page.name, component: page.component }));
@@ -402,6 +401,14 @@ webpackJsonp([2],{
 
 	var AboutUsText = "Our flame ignited in the summer two years ago. A first date in Sarah's hometown where Kasey was attending Florida Tech at the always romantic Buffalo Wild Wing's. The only restaurant we could think of that was still open after he got off his night shift. Sarah first fell for Kasey that evening, tripping on a bench on the way out. After a few more dates, endless texting and phone calls Kasey left her a note with a package of green apple licorice. The note read \"Will you be my girlfriend? Check Yes or No\". Little less than two years later we found ourselves rushing to breakfast at Cinderella's Castle. Minus some little hiccups: unexpectedly cold weather, passing both our parents on our way there and convincing her they were some dopplegangers, we finally made it to the best seat in the whole restaurant. Right in the middle, against the window looking out at the park. Children and princesses surrounding us, trumpets sounded - confused, thinking the waiter was bringing the check, he instead brought out a glass slipper and announced the prince has something to ask her. With everyone in the whole restaurant looking at us, Kasey drops to one knee and everything else just faded away. Balling at this point, of course with photos to prove, She said yes.";
 
+	var siteName = document.domain;
+	var startIndex = siteName.indexOf('www.');
+	startIndex = startIndex >= 0 ? startIndex + 'www.'.length : 0;
+	siteName = siteName.substring(startIndex);
+	siteName = _.trimEnd(siteName, '.com');
+
+	var prefix = siteName === 'localhost' || siteName === 'thefamilypowers' ? '/wedding/' : '/';
+
 	var AboutUs = _react2.default.createClass({
 	  displayName: 'AboutUs',
 
@@ -415,12 +422,12 @@ webpackJsonp([2],{
 	        _react2.default.createElement(
 	          'span',
 	          { className: 'image-container float-left' },
-	          'TODO: Image'
+	          _react2.default.createElement('img', { src: prefix + 'images/couple1.jpg', className: 'img-responsive img-circle center-block' })
 	        ),
 	        _react2.default.createElement(
 	          'span',
 	          { className: 'image-container float-right' },
-	          'TODO: Image'
+	          _react2.default.createElement('img', { src: prefix + 'images/couple2.jpg', className: 'img-responsive img-circle center-block' })
 	        ),
 	        _react2.default.createElement(
 	          'span',
@@ -4130,6 +4137,10 @@ webpackJsonp([2],{
 
 	__webpack_require__(316);
 
+	__webpack_require__(317);
+
+	__webpack_require__(318);
+
 /***/ },
 
 /***/ 300:
@@ -4261,6 +4272,20 @@ webpackJsonp([2],{
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "wedding/images/pile_of_gold.jpg";
+
+/***/ },
+
+/***/ 317:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "wedding/images/couple1.jpg";
+
+/***/ },
+
+/***/ 318:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "wedding/images/couple2.jpg";
 
 /***/ }
 

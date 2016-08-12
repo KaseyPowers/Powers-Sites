@@ -84,10 +84,9 @@ const WeddingApp = React.createClass({
 
 var App = React.createClass({
   render: function() {
-    let myPrefix = prefix.length > 1 ? prefix + '/' : prefix;
     let PageRoutes = _.reduce(Pages, function(result, page, index) {
       if (index === 0) {
-         result.push(<IndexRoute key={'Index ' + page.name} component={page.component}  />);
+        result.push(<IndexRoute key={'Index ' + page.name} component={page.component}  />);
       }
       result.push(<Route key={page.name} path={page.path} component={page.component} />);
       return result;
