@@ -7,7 +7,7 @@ var TheEvent = React.createClass({
   render: function() {
     return (
       <Page>
-        <h4>The Event</h4>
+        <h1 className="text-test-c">The Event</h1>
         <Map/>
       </Page>
     )

@@ -1,7 +1,7 @@
 var dateformat = require('dateformat');
 var figures = require('figures');
 
-var template = '[{grey:%s}]} {yellow:[av-workflow]} ';
+var template = '[{grey:%s}]} {yellow:[powers-sites]} ';
 
 var Logger = require('eazy-logger').Logger;
 

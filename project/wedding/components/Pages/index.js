@@ -1,7 +1,7 @@
 import AboutUs from './about-us';
 import BridalParty from './bridal-party';
 import TheEvent from './the-event';
-import Registry from './registry';
+import Registry from './Registry';
 // import TestSection from './TestSection';
 
 export default [

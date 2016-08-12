@@ -69,11 +69,11 @@
       text-align: left;
       display: none;
       overflow: hidden;;
-      opacity: 0;
-      min-width: 0px;
+      // opacity: 0;
+      width: 0px;
       padding: 0px 4px;
       vertical-align: middle;
-      transition: opacity 0.5s ease 1s, width 0.5s ease 1s;
+      // transition: opacity 0.5s ease 1s, width 0.5s ease 1s;
 
       .title {
         font-size: 18px;
@@ -114,7 +114,7 @@
     top: -(@expandedContainerHeight + @carrotSize);
     z-index: 100;
     .location-container {
-      min-width: @expandedContainerWidth;
+      width: @expandedContainerWidth;
       height: @expandedContainerHeight;
       border-radius: 5px;
       .container-body {
