@@ -6810,7 +6810,7 @@ button.close {
   text-align: left;
   display: none;
   overflow: hidden;
-  width: 0px;
+  min-width: 0px;
   padding: 0px 4px;
   vertical-align: middle;
 }
@@ -6851,7 +6851,7 @@ button.close {
   z-index: 100;
 }
 .location-marker:hover .location-container {
-  width: 125px;
+  min-width: 125px;
   height: 55px;
   border-radius: 5px;
 }

@@ -395,6 +395,10 @@ webpackJsonp([2],{
 
 	var _Page2 = _interopRequireDefault(_Page);
 
+	var _lodash = __webpack_require__(173);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
 	__webpack_require__(264);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -405,7 +409,7 @@ webpackJsonp([2],{
 	var startIndex = siteName.indexOf('www.');
 	startIndex = startIndex >= 0 ? startIndex + 'www.'.length : 0;
 	siteName = siteName.substring(startIndex);
-	siteName = _.trimEnd(siteName, '.com');
+	siteName = _lodash2.default.trimEnd(siteName, '.com');
 
 	var prefix = siteName === 'localhost' || siteName === 'thefamilypowers' ? '/wedding/' : '/';
 

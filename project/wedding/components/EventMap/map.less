@@ -70,7 +70,7 @@
       display: none;
       overflow: hidden;;
       // opacity: 0;
-      width: 0px;
+      min-width: 0px;
       padding: 0px 4px;
       vertical-align: middle;
       // transition: opacity 0.5s ease 1s, width 0.5s ease 1s;
@@ -114,7 +114,7 @@
     top: -(@expandedContainerHeight + @carrotSize);
     z-index: 100;
     .location-container {
-      width: @expandedContainerWidth;
+      min-width: @expandedContainerWidth;
       height: @expandedContainerHeight;
       border-radius: 5px;
       .container-body {
